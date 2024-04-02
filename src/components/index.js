@@ -1,0 +1,9 @@
+export { default as Header } from './Header';
+export { default as Welcome } from './home/Welcome';
+export { default as About } from './home/About';
+export { default as ResumeButton } from './ResumeButton';
+export { default as AnimatedDiv } from './global/AnimatedDiv';
+export { default as AnimatedHoverable } from './global/AnimatedHoverable';
+export { default as MainPage } from './home/MainPage';
+export { default as Contact } from './home/Contact';
+export { default as FunnyButton } from './FunnyButton';
