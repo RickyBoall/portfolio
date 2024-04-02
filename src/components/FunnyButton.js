@@ -1,6 +1,7 @@
 "use client"
 import { motion, useAnimationControls } from 'framer-motion';
 import AnimatedDiv from './global/AnimatedDiv';
+import useSound from 'use-sound';
 
 export default function FunnyButton() {
     const animateAzumanga = useAnimationControls();
@@ -12,10 +13,10 @@ export default function FunnyButton() {
         },
         initial: { opacity: 0, y: 30 },
     }
-    const audio = new Audio("/americaya.mp3");
+    const [audio] = useSound("/americaya.mp3");
 
     async function triggerAnimation() {
-        audio.play();
+        audio();
         await animateAzumanga.start("active");
         await animateSmall.start("active")
         animateSmall.start({ opacity: 0, y: 30 });
@@ -25,7 +26,7 @@ export default function FunnyButton() {
     return (
         <div>
             <AnimatedDiv delay={0.6}>
-                <div onClick={() => triggerAnimation()} class="flex bg-teal-500 text-zinc-900 text-lg font-bold rounded-lg justify-center items-center h-10 min-w-32 cursor-pointer duration-200 hover:bg-zinc-700 hover:text-teal-500"> Submit </div>
+                <div onClick={() => triggerAnimation()} className="flex bg-teal-500 text-zinc-900 text-lg font-bold rounded-lg justify-center items-center h-10 min-w-32 cursor-pointer duration-200 hover:bg-zinc-700 hover:text-teal-500"> Submit </div>
             </AnimatedDiv>
             <div className='flex flex-row'>
                 <motion.div className='fixed -bottom-28 left-10' initial="initial" animate={animateAzumanga} variants={variants} >
