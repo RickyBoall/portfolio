@@ -1,3 +1,4 @@
+"use client"
 import { motion, useAnimationControls } from 'framer-motion';
 import AnimatedDiv from './global/AnimatedDiv';
 
@@ -17,7 +18,6 @@ export default function FunnyButton() {
         audio.play();
         await animateAzumanga.start("active");
         await animateSmall.start("active")
-        await animateAzumanga.start({ rotate: 360, transition: { duration: 1.5} });
         animateSmall.start({ opacity: 0, y: 30 });
         animateAzumanga.start({ opacity: 0, y: 30 });
     }
