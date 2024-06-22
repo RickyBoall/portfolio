@@ -2,16 +2,16 @@
 import Image from "next/image";
 import { AnimatePresence, useInView } from "framer-motion"
 import { Welcome, About, AnimatedDiv, MainPage } from '@/components';
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
 export default function Home() {
   const ref = useRef(null);
+  const [viewToggle, setViewToggle] = useState(false);
 
   function handleClick() {
-      ref.current.scrollIntoView({
-        behavior: 'smooth'
-      })
+      setViewToggle(true);
+      
   }
 
   return (
@@ -23,10 +23,7 @@ export default function Home() {
         <div> - test </div>
       </div> */}
       <div className="flex flex-col h-[100vh] snap-y overflow-y-scroll scrollbar-hide snap-mandatory w-full">
-        <Welcome handleClick={handleClick} />
-        <div ref={ref}>
-            <MainPage />
-        </div>
+        {viewToggle ? <MainPage /> : <Welcome handleClick={handleClick} /> }
       </div>
     </div>
   );

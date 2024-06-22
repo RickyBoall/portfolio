@@ -6,7 +6,7 @@ export default function ResumeButton() {
     }
     
     return (
-        <div onClick={handleClick} className="flex mr-10 items-center justify-center bg-teal-500 rounded-lg h-10 min-w-32 hover:bg-zinc-800 hover:text-teal-500 text-zinc-900 cursor-pointer duration-200" >
+        <div onClick={handleClick} className="flex mr-10 items-center justify-center bg-indigo-500 rounded-lg h-10 min-w-32 hover:bg-zinc-800 hover:text-indigo-500 text-zinc-900 cursor-pointer duration-200" >
             <p className="font-bold text-lg"> {"Resume ->"} </p>
         </div>
     )

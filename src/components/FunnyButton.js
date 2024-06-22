@@ -26,7 +26,7 @@ export default function FunnyButton() {
     return (
         <div>
             <AnimatedDiv delay={0.6}>
-                <div onClick={() => triggerAnimation()} className="flex bg-teal-500 text-zinc-900 text-lg font-bold rounded-lg justify-center items-center h-10 min-w-32 cursor-pointer duration-200 hover:bg-zinc-700 hover:text-teal-500"> Submit </div>
+                <div onClick={() => triggerAnimation()} className="flex bg-indigo-500 text-zinc-900 text-lg font-bold rounded-lg justify-center items-center h-10 min-w-32 cursor-pointer duration-200 hover:bg-zinc-700 hover:text-indigo-500"> Submit </div>
             </AnimatedDiv>
             <div className='flex flex-row'>
                 <motion.div className='fixed -bottom-28 left-10' initial="initial" animate={animateAzumanga} variants={variants} >

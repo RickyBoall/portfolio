@@ -5,5 +5,7 @@ export { default as ResumeButton } from './ResumeButton';
 export { default as AnimatedDiv } from './global/AnimatedDiv';
 export { default as AnimatedHoverable } from './global/AnimatedHoverable';
 export { default as MainPage } from './home/MainPage';
-export { default as Contact } from './home/Contact';
+export { default as Projects } from './home/Projects';
 export { default as FunnyButton } from './FunnyButton';
+export { default as AnimatedIcons } from './AnimatedIcons';
+export { default as Contact } from './home/Contact';

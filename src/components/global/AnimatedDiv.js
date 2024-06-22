@@ -1,7 +1,7 @@
 import { motion, useInView, useAnimationControls } from "framer-motion";
 import { useEffect, useRef } from "react";
 
-export default function AnimatedDiv({ children, delay, className }) {
+export default function AnimatedDiv({ children, delay, className, outroAnimation }) {
     const ref = useRef(null);
     const inView = useInView(ref);
     const animate = useAnimationControls();
@@ -18,7 +18,9 @@ export default function AnimatedDiv({ children, delay, className }) {
         if (inView) {
             animate.start("active")
         } else {
-            animate.start('initial')
+            if (outroAnimation == true) {
+                animate.start('initial')
+            }
         }
     }, [inView])
 

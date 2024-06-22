@@ -1,13 +1,30 @@
 "use client"
 
 import { useAnimationControls, useInView, motion } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AnimatedDiv, ResumeButton } from "@/components";
 
 export default function Header() {
     const ref = useRef(null);
     const inView = useInView(ref);
     const animate = useAnimationControls();
+    const [x, setX] = useState();
+    const [y, setY] = useState();
+    useEffect(
+        () => {
+        const update = (e) => {
+            setX(e.x)
+            setY(e.y)
+        }
+        window.addEventListener('mousemove', update)
+        window.addEventListener('touchmove', update)
+        return () => {
+            window.removeEventListener('mousemove', update)
+            window.removeEventListener('touchmove', update)
+        }
+        },
+        [setX, setY]
+    )
 
     const variants = {
         active: {
@@ -26,17 +43,21 @@ export default function Header() {
     }, [inView])
 
     return (
-        <motion.div className="sticky top-0" initial="initial" animate={animate} variants={variants}>
-            <div ref={ref} className="overflow-hidden w-full bg-zinc-700 bg-opacity-50">
-                <AnimatedDiv delay={1}>
-                    <div className="flex flex-row justify-between items-center h-16 opacity-100">
-                        <div className="flex justify-center items-center w-8 h-8 bg-teal-500 rounded-lg ml-8">
-                            <p className="text-zinc-900 font-bold text-lg">S</p>
+        <>
+        {/* <p> {x} {y} </p> */}
+            {/* <div className="absolute invisible lg:visible w-64 h-64 bg-zinc-700 rounded-full blur-3xl opacity-50 z-0"></div> */}
+            <motion.div className="sticky top-0 z-50 x" initial="initial" animate={animate} variants={variants}>
+                <div ref={ref} className="overflow-hidden w-full bg-neutral-900 bg-opacity-50 z-0 backdrop-blur-sm">
+                    <AnimatedDiv delay={1}>
+                        <div className="flex flex-row justify-between items-center h-16 opacity-100">
+                            <div className="flex justify-center items-center w-8 h-8 bg-indigo-500 rounded-lg ml-8">
+                                <p className="text-zinc-900 font-bold text-lg">S</p>
+                            </div>
+                            <ResumeButton />
                         </div>
-                        <ResumeButton />
-                    </div>
-                </AnimatedDiv>
-            </div>
-        </motion.div>
+                    </AnimatedDiv>
+                </div>
+            </motion.div>
+        </>
     )
 }
