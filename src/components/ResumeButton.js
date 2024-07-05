@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 export default function ResumeButton() {
     function handleClick() {
-        window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+        window.open("/pdf/resume-sukhraj-boall.pdf");
     }
     
     return (
