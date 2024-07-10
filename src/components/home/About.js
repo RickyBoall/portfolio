@@ -7,17 +7,35 @@ export default function About() {
 
     return (
         <div className="flex flex-col mx-[10vw] space-y-4 min-h-[80vh] ">
-            <AnimatedDiv delay={0.2} className={"mt-[10vh] w-full"}>
+            <AnimatedDiv delay={0.2} className={"mt-[5vh] w-full"}>
                 <p className="text-indigo-500 text-6xl pb-4 mb-8 border-b-4 border-neutral-400"> About me </p>
             </AnimatedDiv>
             <div className="flex flex-col lg:flex-row lg:space-x-8">
-                <div className="flex flex-col min-w-[40vw]">
+                <div className="flex flex-col min-w-[45vw]">
                     <div className="flex flex-col lg:max-w-[40vw] justify-center">
                         <AnimatedDiv delay={0.3}>
-                            <p className="text-neutral-300 text-xl leading-7"> I am a 23 year old Freelance Full Stack Developer with a passion for exploring and innovating with new technologies. My experience includes spearheading projects utilizing frameworks such as Django and React.js, where I've demonstrated my ability to lead teams, manage projects, and foster collaboration to achieve exceptional results.</p>
+                            <p className="text-neutral-300 text-xl leading-7"> I am a 23 year old Freelance Full Stack Developer with a passion for exploring and innovating with new technologies. My experience includes spearheading projects utilizing frameworks such as <span className=" text-indigo-500"> Django </span> and React.js. </p>
+                            {/* where I've demonstrated my ability to lead teams, manage projects, and foster collaboration to achieve exceptional results. */}
                         </AnimatedDiv>
-                        <AnimatedDiv delay={0.4}>
-                            <p className="text-neutral-300 text-xl leading-7 pt-4"> When I'm not spending time coding, I like to keep myself active with things such as weightlifting at the gym, skateboarding and working on my car! </p>
+                        <br/>
+
+                        <AnimatedDiv delay={0.3}>
+                            <p className="text-neutral-300 text-xl leading-7">
+                                I have experience creating CRM dashboards to help manage customer interactions and data, as well as creating Front-End landing pages to show off a business’s products and services.
+                            </p>
+                        </AnimatedDiv>
+                        <br/>
+                        <AnimatedDiv delay={0.3}>
+                            <p className="text-neutral-300 text-xl leading-7">
+                                When I'm not spending time coding, I like to keep myself active with things such as weightlifting at the gym, skateboarding and working on my car!
+                            </p>
+                        </AnimatedDiv>
+                        <br/>
+
+                        <AnimatedDiv delay={0.3}>
+                            <p className="text-neutral-300 text-xl leading-7">
+                                Currently I am looking for opportunities to improve my UX/UI design, as well as developing new database schemas using frameworks such as Spring Boot, Ruby and PhP/Laravel!
+                            </p>
                         </AnimatedDiv>
                     </div>
                 </div>
