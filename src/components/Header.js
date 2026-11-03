@@ -1,63 +1,75 @@
 "use client"
 
-import { useAnimationControls, useInView, motion } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
-import { AnimatedDiv, ResumeButton } from "@/components";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { motion, useScroll, useSpring } from "framer-motion";
+import { profile, tracks } from "@/data/resume";
+
+const sections = [
+    { id: "work", label: "Work" },
+    { id: "journey", label: "Journey" },
+    { id: "skills", label: "Skills" },
+    { id: "contact", label: "Contact" },
+];
 
 export default function Header() {
-    const ref = useRef(null);
-    const inView = useInView(ref);
-    const animate = useAnimationControls();
-    const [x, setX] = useState();
-    const [y, setY] = useState();
-    useEffect(
-        () => {
-        const update = (e) => {
-            setX(e.x)
-            setY(e.y)
-        }
-        window.addEventListener('mousemove', update)
-        window.addEventListener('touchmove', update)
-        return () => {
-            window.removeEventListener('mousemove', update)
-            window.removeEventListener('touchmove', update)
-        }
-        },
-        [setX, setY]
-    )
-
-    const variants = {
-        active: {
-            opacity: 1, y: 0,
-            transition: { delay: 0.5, type: "spring", bounce: 0 }
-        },
-        initial: { opacity: 0, y: -20 },
-    }
-
-    useEffect(() => {
-        if (inView) {
-            animate.start("active")
-        } else {
-            animate.start('initial')
-        }
-    }, [inView])
+    const pathname = usePathname();
+    const current = pathname === tracks.pm.href ? "pm" : "dev";
+    const { scrollYProgress } = useScroll();
+    const progress = useSpring(scrollYProgress, { stiffness: 200, damping: 40 });
 
     return (
-        <>
-        {/* <p> {x} {y} </p> */}
-            {/* <div className="absolute invisible lg:visible w-64 h-64 bg-zinc-700 rounded-full blur-3xl opacity-50 z-0"></div> */}
-            <motion.div className="sticky top-0 z-50 x" initial="initial" animate={animate} variants={variants}>
-                <div ref={ref} className="overflow-hidden w-full bg-neutral-900 bg-opacity-50 z-0 backdrop-blur-sm">
-                    <AnimatedDiv delay={1}>
-                        <div className="flex flex-row justify-between items-center h-16 opacity-100">
-                            <div className="flex justify-center items-center w-8 h-8 bg-indigo-500 rounded-lg ml-8">
-                                <p className="text-zinc-900 font-bold text-lg">S</p>
-                            </div>
-                            <ResumeButton />
-                        </div>
-                    </AnimatedDiv>
+        <header className={`${tracks[current].theme} sticky top-0 z-20 border-b border-line bg-bg`}>
+            <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:z-30 focus:m-2 focus:rounded-md focus:bg-accent focus:px-3 focus:py-2 focus:text-accent-ink">
+                Skip to content
+            </a>
+            <div className="mx-auto flex h-16 max-w-5xl items-center justify-between gap-3 px-4 sm:px-6 lg:px-8">
+                <Link
+                    href={tracks[current].href}
+                    aria-label={`${profile.shortName}, back to top`}
+                    className="hidden h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-accent text-sm font-bold tracking-tight text-accent-ink transition-colors hover:bg-accent-hover min-[380px]:flex"
+                >
+                    SB
+                </Link>
+
+                <nav aria-label="Sections" className="hidden lg:block">
+                    <ul className="flex gap-6 text-sm font-medium text-muted">
+                        {sections.map(({ id, label }) => (
+                            <li key={id}><a className="transition-colors hover:text-ink" href={`#${id}`}>{label}</a></li>
+                        ))}
+                    </ul>
+                </nav>
+
+                <div className="flex flex-1 items-center justify-between gap-3 sm:flex-none">
+                    <nav aria-label="Resume version">
+                        <ul className="flex rounded-full border border-line p-1">
+                            {Object.entries(tracks).map(([key, { href, label }]) => (
+                                <li key={key}>
+                                    <Link
+                                        href={href}
+                                        scroll={false}
+                                        aria-current={key === current ? "page" : undefined}
+                                        className={`relative flex min-h-9 items-center whitespace-nowrap rounded-full px-3 text-sm font-medium transition-colors ${key === current ? "text-ink" : "text-muted hover:text-ink"}`}
+                                    >
+                                        {key === current && (
+                                            <motion.span
+                                                layoutId="track-pill"
+                                                className="absolute inset-0 rounded-full bg-line"
+                                                transition={{ type: "spring", stiffness: 400, damping: 35 }}
+                                            />
+                                        )}
+                                        <span className="relative">{label}</span>
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </nav>
+                    <a href={tracks[current].resume} target="_blank" rel="noreferrer" className="inline-flex min-h-10 items-center rounded-full bg-accent px-4 text-sm font-semibold text-accent-ink transition-colors hover:bg-accent-hover">
+                        Resume
+                    </a>
                 </div>
-            </motion.div>
-        </>
-    )
+            </div>
+            <motion.div aria-hidden="true" className="absolute inset-x-0 -bottom-px h-0.5 origin-left bg-accent" style={{ scaleX: progress }} />
+        </header>
+    );
 }

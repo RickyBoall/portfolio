@@ -1,34 +1,17 @@
-import { motion, useInView, useAnimationControls } from "framer-motion";
-import { useEffect, useRef } from "react";
+"use client"
 
-export default function AnimatedDiv({ children, delay, className, outroAnimation }) {
-    const ref = useRef(null);
-    const inView = useInView(ref);
-    const animate = useAnimationControls();
+import { motion } from "framer-motion";
 
-    const variants = {
-        active: {
-            opacity: 1, y: 0,
-            transition: { delay: delay ? delay : 0, type: "spring", bounce: 0.6, duration: 1}
-        },
-        initial: { opacity: 0, y: -20 },
-    }
-
-    useEffect(() => {
-        if (inView) {
-            animate.start("active")
-        } else {
-            if (outroAnimation == true) {
-                animate.start('initial')
-            }
-        }
-    }, [inView])
-
+export default function AnimatedDiv({ delay = 0, className = "", children }) {
     return (
-        <div ref={ref} className={className}>
-            <motion.div id="animated-div" initial="initial" animate={animate} variants={variants} transition={{ type: ""}} >
-                {children}
-            </motion.div>
-        </div>
-    )
+        <motion.div
+            className={`reveal ${className}`}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.5, delay, ease: [0.22, 1, 0.36, 1] }}
+        >
+            {children}
+        </motion.div>
+    );
 }

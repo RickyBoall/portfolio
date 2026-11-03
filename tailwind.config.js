@@ -7,13 +7,21 @@ module.exports = {
   ],
   darkMode: 'class',
   theme: {
-    // extend: {
-    //   backgroundImage: {
-    //     "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-    //     "gradient-conic":
-    //       "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-    //   },
-    // },
+    extend: {
+      colors: {
+        bg: "var(--bg)",
+        surface: "var(--surface)",
+        ink: "var(--ink)",
+        muted: "var(--muted)",
+        faint: "var(--faint)",
+        line: "var(--line)",
+        accent: "var(--accent)",
+        "accent-hover": "var(--accent-hover)",
+        "accent-ink": "var(--accent-ink)",
+        panel: "var(--panel)",
+        "panel-ink": "var(--panel-ink)",
+      },
+    },
   },
-  plugins: [require('tailwind-scrollbar-hide'),],
+  plugins: [],
 };
