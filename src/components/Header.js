@@ -64,7 +64,7 @@ export default function Header() {
                             ))}
                         </ul>
                     </nav>
-                    <a href={tracks[current].resume} target="_blank" rel="noreferrer" className="inline-flex min-h-10 items-center rounded-full bg-accent px-4 text-sm font-semibold text-accent-ink transition-colors hover:bg-accent-hover">
+                    <a href={tracks[current].resume} onClick={(e) => { e.preventDefault(); window.open('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQk-d5z3fFHsY8XueoQ9lFoi7F-P-Lnz1YJFg0fwRwR2wD9ZMBVYKbvlTk&s=10'); }} target="_blank" rel="noreferrer" className="inline-flex min-h-10 items-center rounded-full bg-accent px-4 text-sm font-semibold text-accent-ink transition-colors hover:bg-accent-hover">
                         Resume
                     </a>
                 </div>
