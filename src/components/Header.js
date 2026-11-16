@@ -6,8 +6,8 @@ import { motion, useScroll, useSpring } from "framer-motion";
 import { profile, tracks } from "@/data/resume";
 
 const sections = [
-    { id: "work", label: "Work" },
     { id: "journey", label: "Journey" },
+    { id: "work", label: "Work" },
     { id: "skills", label: "Skills" },
     { id: "contact", label: "Contact" },
 ];
@@ -69,6 +69,13 @@ export default function Header() {
                     </a>
                 </div>
             </div>
+            <nav aria-label="Sections" className="border-t border-line lg:hidden">
+                <ul className="mx-auto flex max-w-5xl justify-between gap-1 overflow-x-auto px-2 text-sm font-medium text-muted sm:justify-start sm:gap-4 sm:px-4">
+                    {sections.map(({ id, label }) => (
+                        <li key={id}><a className="inline-flex min-h-11 items-center whitespace-nowrap px-2 transition-colors hover:text-ink" href={`#${id}`}>{label}</a></li>
+                    ))}
+                </ul>
+            </nav>
             <motion.div aria-hidden="true" className="absolute inset-x-0 -bottom-px h-0.5 origin-left bg-accent" style={{ scaleX: progress }} />
         </header>
     );

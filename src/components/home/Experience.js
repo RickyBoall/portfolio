@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react";
-import { motion, useMotionValue, useMotionValueEvent, useReducedMotion, useScroll, useSpring } from "framer-motion";
+import { AnimatePresence, motion, useMotionValue, useMotionValueEvent, useReducedMotion, useScroll, useSpring } from "framer-motion";
 import Section from "./Section";
 
 const ease = [0.22, 1, 0.36, 1];
@@ -14,6 +14,115 @@ const entry = {
     hidden: { opacity: 0, x: -16 },
     show: { opacity: 1, x: 0, transition: { duration: 0.5, ease, delayChildren: 0.1 } },
 };
+// on phones, long entries collapse to a few lines and a handful of tags
+const MOBILE_LINES = 3;
+const MOBILE_TAGS = 5;
+
+function useIsPhone() {
+    const [phone, setPhone] = useState(false);
+    useEffect(() => {
+        const query = window.matchMedia("(max-width: 639px)");
+        const update = () => setPhone(query.matches);
+        update();
+        query.addEventListener("change", update);
+        return () => query.removeEventListener("change", update);
+    }, []);
+    return phone;
+}
+
+function JobDetails({ text, tags }) {
+    const phone = useIsPhone();
+    const [expanded, setExpanded] = useState(false);
+    const [collapsedHeight, setCollapsedHeight] = useState(0);
+    const textRef = useRef(null);
+
+    useEffect(() => {
+        if (!phone) return;
+        const lineHeight = parseFloat(getComputedStyle(textRef.current).lineHeight);
+        setCollapsedHeight(lineHeight * MOBILE_LINES);
+    }, [phone]);
+
+    const collapsed = phone && !expanded;
+    const shownTags = collapsed ? tags.slice(0, MOBILE_TAGS) : tags;
+    const hiddenCount = tags.length - MOBILE_TAGS;
+
+    return (
+        <>
+            <div className="relative mt-3 max-w-2xl">
+                <motion.div
+                    className="overflow-hidden"
+                    initial={false}
+                    animate={{ height: collapsed && collapsedHeight ? collapsedHeight : "auto" }}
+                    transition={{ duration: 0.45, ease }}
+                >
+                    <p ref={textRef} className="text-pretty leading-relaxed text-muted">{text}</p>
+                </motion.div>
+                <motion.div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-bg to-transparent"
+                    initial={false}
+                    animate={{ opacity: collapsed ? 1 : 0 }}
+                    transition={{ duration: 0.3 }}
+                />
+            </div>
+            <ul className="mt-4 flex flex-wrap gap-2">
+                <AnimatePresence initial={false}>
+                    {shownTags.map((tag, i) => (
+                        <motion.li
+                            key={tag}
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1, transition: { duration: 0.25, delay: 0.15 + Math.max(0, i - MOBILE_TAGS) * 0.04 } }}
+                            exit={{ opacity: 0, scale: 0.8, transition: { duration: 0.15 } }}
+                            className="rounded-full border border-line px-3 py-1 text-sm text-muted"
+                        >
+                            {tag}
+                        </motion.li>
+                    ))}
+                    {collapsed && hiddenCount > 0 && (
+                        <motion.li
+                            key="more"
+                            aria-hidden="true"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1, transition: { duration: 0.2, delay: 0.2 } }}
+                            exit={{ opacity: 0, transition: { duration: 0.1 } }}
+                            className="rounded-full px-1 py-1 text-sm text-faint"
+                        >
+                            +{hiddenCount} more
+                        </motion.li>
+                    )}
+                </AnimatePresence>
+            </ul>
+            {phone && (
+                <motion.button
+                    type="button"
+                    onClick={() => setExpanded(!expanded)}
+                    aria-expanded={expanded}
+                    whileTap={{ scale: 0.96 }}
+                    className="mt-4 inline-flex min-h-11 items-center gap-2 rounded-full border-2 border-accent bg-surface px-4 text-sm font-semibold text-accent transition-colors active:bg-accent active:text-accent-ink"
+                >
+                    {expanded ? "Show less" : "Read more"}
+                    <motion.svg
+                        aria-hidden="true"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        initial={false}
+                        animate={{ rotate: expanded ? 180 : 0 }}
+                        transition={{ duration: 0.3, ease }}
+                    >
+                        <path d="M4 6l4 4 4-4" />
+                    </motion.svg>
+                </motion.button>
+            )}
+        </>
+    );
+}
+
 const dot = {
     hidden: { scale: 0 },
     show: { scale: 1, transition: { type: "spring", stiffness: 400, damping: 18 } },
@@ -100,12 +209,7 @@ export default function Experience({ jobs }) {
                             <p className="text-sm tabular-nums text-faint">{dates}</p>
                             <h3 className="mt-1 text-xl font-semibold tracking-tight sm:text-2xl">{company}</h3>
                             <p className="font-medium text-muted">{role}</p>
-                            <p className="mt-3 max-w-2xl text-pretty leading-relaxed text-muted">{text}</p>
-                            <ul className="mt-4 flex flex-wrap gap-2">
-                                {tags.map((tag) => (
-                                    <li key={tag} className="rounded-full border border-line px-3 py-1 text-sm text-muted">{tag}</li>
-                                ))}
-                            </ul>
+                            <JobDetails text={text} tags={tags} />
                         </motion.li>
                     ))}
                 </ol>

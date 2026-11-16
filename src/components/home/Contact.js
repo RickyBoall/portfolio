@@ -18,7 +18,7 @@ export default function Contact({ resume }) {
     }
 
     return (
-        <section id="contact" aria-labelledby="contact-title" className="scroll-mt-20 pb-10 pt-6 sm:pb-16">
+        <section id="contact" aria-labelledby="contact-title" className="scroll-mt-28 pb-10 lg:scroll-mt-20 pt-6 sm:pb-16">
             <AnimatedDiv className="rounded-3xl bg-panel p-6 text-panel-ink sm:p-12">
                 <h2 id="contact-title" className="text-3xl font-semibold tracking-tight sm:text-5xl">Let's talk.</h2>
                 <p className="mt-3 max-w-xl text-pretty text-lg opacity-90">Email is the best way to reach me. You can also find me on LinkedIn or GitHub.</p>

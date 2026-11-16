@@ -30,7 +30,7 @@ export const tracks = {
             { value: 60, suffix: "%", label: "lower search latency" },
             { prefix: "$", value: 100, suffix: "K", label: "revenue in 3 months" },
         ],
-        workIntro: "Four projects I'm proud of, and what changed because of them.",
+        workIntro: "Five projects I'm proud of, and what changed because of them.",
         stories: [
              {
                 company: "Andie Technologies",
@@ -77,30 +77,43 @@ export const tracks = {
                 // ],
                 stack: ["React", "React Native"],
             },
+            {
+                company: "Freelance",
+                title: "A website for a precision machining company",
+                hook: "I designed and built a website that gives a machining subcontractor a professional online presence and a simple way for customers to request quotes.",
+                images: [
+                    { src: "/images/work/6west-home.webp", alt: "Homepage of the 6 West Machining website, with a dark background, gold headline and company stats", width: 1600, height: 804 },
+                    { src: "/images/work/6west-contact.webp", alt: "Contact page of the 6 West Machining website, showing the quote request form", width: 1600, height: 803 },
+                ],
+                challenge: "The business needed a site that showed off its capabilities and the industries it serves, and made it easy for new customers to get in touch about a job.",
+                action: "I designed a dark, gold-accented look that matches the brand and built pages for the company, its capabilities, the industries it serves and contact. The quote form collects the part details, quantity and timeline the shop needs to price a job.",
+                result: "The business has a polished, professional site that presents its capabilities clearly and lets customers send a complete quote request in one step.",
+                stack: ["React", "Next.js", "Web design", "UI/UX"],
+            },
         ],
         journey: [
             {
                 ...freelance,
                 role: "Web Developer",
-                text: "I build software that helps small businesses run their day-to-day operations. I've delivered web dashboards that give owners one place to see and act on their numbers, and fast, scalable order management systems in Node.js that keep order processing smooth as the business grows. I handle each project end to end, from the first conversation through to deployment and hosting.",
+                text: "I build software that helps small businesses run day to day, from web dashboards that put an owner's numbers in one place to order management systems in Node.js that keep up as the business grows. I own each project end to end, from the first conversation to deployment and hosting.",
                 tags: ["React", "Next.js", "TypeScript", "Node.js", "Deployment"],
             },
             {
                 ...localhost41,
                 role: "Software Developer",
-                text: "I built the sign-in, session and hosted AI services for a desktop app with Node.js and TypeScript on Google Cloud Run. That covered email code sign-in with bounded retries and abuse protection, sessions that survive restarts and network drops but can't be revived once revoked, and streamed model responses that free their capacity the moment a user cancels. I enforced per-account quotas and concurrency limits at the service boundary, kept provider credentials and session data out of the client and logs, and built background media jobs that survive the desktop sleeping without ever resubmitting a paid job twice.",
+                text: "I built the sign-in, session and hosted AI services for a desktop app using Node.js and TypeScript on Google Cloud Run. Users sign in with an emailed code that is protected against abuse, and their sessions survive network drops but can't be revived once revoked. I also enforced per-account usage quotas on the server and made sure paid background jobs are never submitted twice.",
                 tags: ["Node.js", "TypeScript", "Cloud Run", "Cloud SQL", "Generative AI", "LLM inference"],
             },
             {
                 ...wonderfi,
                 role: "Junior Software Developer",
-                text: "I worked across WonderFi's trading platform with one goal: make it cheaper to run, faster to use and safer to ship. I replaced costly third-party services with in-house ones, including a Redis-backed pricing service that saved $10K a month and a vector search that halved query latency, and shipped a web and mobile UX update that lifted engagement by about 50%. Behind the scenes, I ran deployments on Amazon EKS with ArgoCD and GitOps, built AWS Lambda services for backend work and deployment automation, and introduced LaunchDarkly feature flags so new products could roll out gradually with less risk.",
+                text: "I worked across WonderFi's trading platform to make it cheaper to run, faster to use and safer to ship, replacing costly third-party pricing and search services with in-house ones and shipping a web and mobile UX update. I also ran deployments on Amazon EKS with ArgoCD and GitOps, built AWS Lambda services for backend work and automation, and introduced LaunchDarkly feature flags for gradual rollouts.",
                 tags: ["Go", "Python", "TypeScript", "Java", "React", "React Native", "Redis", "Vector search", "Amazon EKS", "AWS Lambda", "ArgoCD", "LaunchDarkly"],
             },
             {
                 ...andie,
                 role: "Software Developer",
-                text: "I built and led development of a catering platform, from the customer app to the internal tools behind it. The catering management system, built in Python and TypeScript, generated $100K in its first three months, and its custom CRM was used by 50+ operations and sales team members to manage leads, restaurant status, follow-ups and customer communications. I added a live dashboard on WebSockets and Redis for real-time updates, integrated OpenAI's GPT models so customers could describe their event and get tailored catering recommendations, and built React Native apps that matched the web experience. I also led a team of 7 developers, running our Agile process in Jira and orchestrating releases.",
+                text: "I led a team of 7 developers building a catering platform with a customer app and a CRM that more than 50 sales and operations staff used every day. I added a real-time dashboard with WebSockets and Redis, AI-powered catering recommendations using OpenAI's GPT models, and React Native apps that matched the web experience. I also ran our Agile process in Jira and owned releases.",
                 tags: ["Python", "TypeScript", "React Native", "WebSockets", "Redis", "OpenAI API", "LLM integration", "CRM", "Jira", "Team leadership"],
             },
         ],
@@ -125,7 +138,7 @@ export const tracks = {
             { prefix: "~", value: 50, suffix: "%", label: "more engagement from a cross-team rollout" },
             { prefix: "$", value: 100, suffix: "K", label: "revenue in a platform's first 3 months" },
         ],
-        workIntro: "Four projects I'm proud of, and how I got them over the line.",
+        workIntro: "Five projects I'm proud of, and how I got them over the line.",
         stories: [
             {
                 company: "Andie Technologies",
@@ -171,30 +184,43 @@ export const tracks = {
                 result: "The platform generated $100K in its first three months, and 50+ operations and sales team members used it to manage leads, restaurant status, follow-ups and customer communications.",
                 stack: ["Delivery", "Requirements gathering", "AI features"],
             },
+            {
+                company: "Freelance",
+                title: "A website for a precision machining company",
+                hook: "I took a client from first conversation to a live website that gives a machining subcontractor a professional online presence and a simple way for customers to request quotes.",
+                images: [
+                    { src: "/images/work/6west-home.webp", alt: "Homepage of the 6 West Machining website, with a dark background, gold headline and company stats", width: 1600, height: 804 },
+                    { src: "/images/work/6west-contact.webp", alt: "Contact page of the 6 West Machining website, showing the quote request form", width: 1600, height: 803 },
+                ],
+                challenge: "The business needed a site that showed off its capabilities and the industries it serves, and made it easy for new customers to get in touch about a job.",
+                action: "I gathered requirements with the owner, agreed on the scope and pages, then designed a dark, gold-accented look that matches the brand and built pages for the company, its capabilities, the industries it serves and contact. The quote form collects the part details, quantity and timeline the shop needs to price a job.",
+                result: "The business has a polished, professional site that presents its capabilities clearly and lets customers send a complete quote request in one step.",
+                stack: ["Client management", "Requirements", "Web design", "Delivery", "React", "Next.js"],
+            },
         ],
         journey: [
             {
                 ...freelance,
                 role: "Web Developer",
-                text: "I help small business owners turn the way they run their operations into software that fits. With two clients so far, I've owned each project from start to finish: gathering requirements, agreeing on scope, delivering web dashboards and order management systems, and handing over a deployed product the owner can rely on day to day.",
+                text: "I help small business owners turn the way they run their operations into software that fits. For two clients so far, I've owned each project from start to finish. That means gathering requirements, agreeing on scope, delivering dashboards and order management systems, and handing over a deployed product they rely on every day.",
                 tags: ["Client management", "Requirements", "Scoping", "Delivery"],
             },
             {
                 ...localhost41,
                 role: "Software Developer",
-                text: "I was part of a 6-person team taking a desktop AI app from operator-only setup to a consumer product, covering sign-in, sessions and hosted AI responses on Google Cloud Run. I defined the requirements and acceptance criteria for how sessions, accounts and usage limits behave, agreed quotas and abuse thresholds with stakeholders, and set up end-to-end testing from outside the team network so a fresh install could reach a real AI response without manual setup.",
+                text: "I was part of a 6-person team turning a desktop AI app from operator-only setup into a consumer product. I defined requirements and acceptance criteria for sessions, accounts and usage limits, agreed quotas and abuse thresholds with stakeholders, and set up end-to-end testing so a fresh install reaches a real AI response with no manual setup.",
                 tags: ["Specs", "Requirements", "Acceptance criteria", "Delivery", "Generative AI", "AI product", "Usage limits"],
             },
             {
                 ...wonderfi,
                 role: "Junior Software Developer",
-                text: "I worked between engineering and the business at WonderFi, turning product goals into plans teams could deliver. I wrote PRDs and contributed to design documents, then coordinated the work across teams, from moving pricing data in-house to save $10K a month, to a web and mobile UX rollout that lifted engagement by about 50%, to an in-house search that halved query latency. I also introduced LaunchDarkly feature flags so new products could launch in stages, which made releases more predictable and lowered the risk of each one.",
+                text: "I worked between engineering and the business, turning product goals into plans teams could deliver. I wrote PRDs, contributed to design documents and coordinated cross-team work on the pricing migration, the web and mobile UX rollout and the in-house search. I also introduced LaunchDarkly feature flags so launches could happen in stages, making releases more predictable and less risky.",
                 tags: ["PRDs", "Design documents", "Cross-team coordination", "Stakeholder management", "Release management", "Staged rollouts", "LaunchDarkly"],
             },
             {
                 ...andie,
                 role: "Software Developer & Team Lead",
-                text: "I led a team of 7 developers delivering a catering platform that generated $100K in its first three months, including an OpenAI integration that gave customers recommendations based on their event description. Its CRM became the day-to-day tool for 50+ operations and sales team members, who used it to manage leads, restaurant status, follow-ups and customer communications. As team lead, I owned timelines, estimates and releases, ran our Agile process in Jira to keep work prioritized and moving, and was the first point of contact for clients and the business owner. I also kept features and design consistent across web and mobile, so customers got the same experience wherever they ordered.",
+                text: "I led a team of 7 developers delivering a catering platform with a customer app, a CRM that more than 50 sales and operations staff used every day, and AI-powered recommendations. I owned timelines, estimates and releases, ran our Agile process in Jira, and was the first point of contact for clients and the business owner. I also kept features and design consistent across web and mobile.",
                 tags: ["Team leadership", "Agile", "Jira", "Release management", "Client management", "Delivery", "AI features"],
             },
         ],
@@ -211,7 +237,7 @@ export const extras = [
     {
         kicker: "Award · Nov 2021",
         title: "1st Place, CCTX x Serene-RISC Cyber Design Challenge",
-        text: "The challenge was to take a real client's portal and make it easier and safer to use. We interviewed the client to understand where the design was falling short, prioritized the issues that made the site hardest to navigate, and presented a more user-friendly redesign that kept anonymity and confidentiality at its core. The judges awarded it first place.",
+        text: "We redesigned a real client's portal to be easier and safer to use. After interviewing the client and prioritizing the worst navigation problems, we presented a redesign built around anonymity and confidentiality, and won first place.",
     },
     {
         kicker: "Education · Apr 2023",
