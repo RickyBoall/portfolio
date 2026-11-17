@@ -11,7 +11,7 @@ export const profile = {
 };
 
 const freelanceCurrent = { company: "Freelance", dates: "Oct 2026 – Present" };
-const localhost41 = { company: "Localhost41", dates: "Aug 2026 – Present" };
+const mojo = { company: "Mojo", dates: "Aug 2026 – Present" };
 const wonderfi = { company: "WonderFi", dates: "Nov 2024 – June 2026" };
 const freelance = { company: "Freelance", dates: "Feb 2024 – Sept 2024" };
 const andie = { company: "Andie Technologies", dates: "Oct 2020 – Dec 2023" };
@@ -104,9 +104,9 @@ export const tracks = {
                 tags: ["React", "Next.js", "TypeScript", "Node.js", "Deployment"],
             },
             {
-                ...localhost41,
+                ...mojo,
                 role: "Software Developer",
-                text: "At Localhost41, my focus is the sign-in, session and hosted AI services behind a desktop app, built with Node.js and TypeScript on Google Cloud Run. Users sign in with an emailed code that is protected against abuse, and their sessions survive network drops but can't be revived once revoked. I also enforce per-account usage quotas on the server and make sure paid background jobs are never submitted twice.",
+                text: "At Mojo, my focus is the sign-in, session and hosted AI services behind a desktop app, built with Node.js and TypeScript on Google Cloud Run. Users sign in with an emailed code that is protected against abuse, and their sessions survive network drops but can't be revived once revoked. I also enforce per-account usage quotas on the server and make sure paid background jobs are never submitted twice.",
                 tags: ["Node.js", "TypeScript", "Cloud Run", "Cloud SQL", "Generative AI", "LLM inference"],
             },
             {
@@ -232,7 +232,7 @@ export const tracks = {
                 tags: ["Client management", "Requirements", "Scoping", "Delivery"],
             },
             {
-                ...localhost41,
+                ...mojo,
                 role: "Software Developer",
                 text: "I was part of a 6-person team turning a desktop AI app from operator-only setup into a consumer product. I defined requirements and acceptance criteria for sessions, accounts and usage limits, agreed quotas and abuse thresholds with stakeholders, and set up end-to-end testing so a fresh install reaches a real AI response with no manual setup.",
                 tags: ["Specs", "Requirements", "Acceptance criteria", "Delivery", "Generative AI", "AI product", "Usage limits"],
