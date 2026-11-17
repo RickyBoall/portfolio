@@ -100,19 +100,19 @@ export const tracks = {
             {
                 ...freelanceCurrent,
                 role: "Software Developer",
-                text: "I build software that helps small businesses run day to day, from web dashboards that put an owner's numbers in one place to order management systems in Node.js that keep up as the business grows. I own each project end to end, from the first conversation to deployment and hosting.",
+                text: "Small businesses come to me for software that helps them run day to day, from web dashboards that put an owner's numbers in one place to order management systems in Node.js that keep up as the business grows. I own each project end to end, from the first conversation to deployment and hosting.",
                 tags: ["React", "Next.js", "TypeScript", "Node.js", "Deployment"],
             },
             {
                 ...localhost41,
                 role: "Software Developer",
-                text: "I built the sign-in, session and hosted AI services for a desktop app using Node.js and TypeScript on Google Cloud Run. Users sign in with an emailed code that is protected against abuse, and their sessions survive network drops but can't be revived once revoked. I also enforced per-account usage quotas on the server and made sure paid background jobs are never submitted twice.",
+                text: "At Localhost41, my focus is the sign-in, session and hosted AI services behind a desktop app, built with Node.js and TypeScript on Google Cloud Run. Users sign in with an emailed code that is protected against abuse, and their sessions survive network drops but can't be revived once revoked. I also enforce per-account usage quotas on the server and make sure paid background jobs are never submitted twice.",
                 tags: ["Node.js", "TypeScript", "Cloud Run", "Cloud SQL", "Generative AI", "LLM inference"],
             },
             {
                 ...wonderfi,
                 role: "Junior Software Developer",
-                text: "I built features across WonderFi's trading platform on web and mobile, from a post-trade experience that got people trading again to in-house vector search that made the admin dashboard faster for internal teams. Behind the scenes, I built an in-house pricing service that cut out duplicate third-party API calls. I also ran deployments on Amazon EKS with ArgoCD and GitOps, built AWS Lambda services for backend work and automation, and introduced LaunchDarkly feature flags for gradual rollouts.",
+                text: "On WonderFi's trading platform, my work spanned web and mobile, from a post-trade experience that got people trading again to in-house vector search that made the admin dashboard faster for internal teams. Behind the scenes, I built an in-house pricing service that cut out duplicate third-party API calls. I also ran deployments on Amazon EKS with ArgoCD and GitOps, built AWS Lambda services for backend work and automation, and introduced LaunchDarkly feature flags for gradual rollouts.",
                 tags: ["Go", "Python", "TypeScript", "Java", "React", "React Native", "Redis", "Vector search", "Amazon EKS", "AWS Lambda", "ArgoCD", "LaunchDarkly"],
             },
             {
