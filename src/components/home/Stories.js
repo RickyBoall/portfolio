@@ -145,13 +145,14 @@ function Step({ label, children }) {
 
 function Story({ story, defaultOpen }) {
     const { company, title, hook, metric, images, challenge, action, result, compare, stack } = story;
-    const [open, setOpen] = useState(defaultOpen);
+    // every card starts closed so mobile never flashes open; only desktop
+    // (md and up, matching the rest of the mobile layout) opens the first one
+    const [open, setOpen] = useState(false);
     const panelId = useId();
 
-    // start every card closed on phones so the list is quick to scan
     useEffect(() => {
-        if (window.matchMedia("(max-width: 639px)").matches) setOpen(false);
-    }, []);
+        if (defaultOpen && window.matchMedia("(min-width: 768px)").matches) setOpen(true);
+    }, [defaultOpen]);
 
     return (
         <article className="rounded-2xl border border-line bg-surface p-5 transition-colors hover:border-faint sm:p-7">
@@ -162,11 +163,16 @@ function Story({ story, defaultOpen }) {
                     <p className="mt-2 text-pretty leading-relaxed text-muted">{hook}</p>
                 </div>
                 {metric && (
-                    <div className="flex shrink-0 items-baseline gap-3 sm:block sm:w-40 sm:text-right">
-                        <p className="text-3xl font-semibold tracking-tight text-accent sm:text-4xl">
-                            <CountUp prefix={metric.prefix} value={metric.value} suffix={metric.suffix} />
-                        </p>
-                        <p className="text-sm leading-snug text-muted sm:mt-1">{metric.label}</p>
+                    // metric can be one object or an array of them
+                    <div className="flex shrink-0 flex-wrap gap-x-6 gap-y-3 sm:w-40 sm:flex-col sm:gap-4">
+                        {[].concat(metric).map((m) => (
+                            <div key={m.label} className="flex items-baseline gap-3 sm:block sm:text-right">
+                                <p className="text-3xl font-semibold tracking-tight text-accent sm:text-4xl">
+                                    <CountUp prefix={m.prefix} value={m.value} suffix={m.suffix} />
+                                </p>
+                                <p className="text-sm leading-snug text-muted sm:mt-1">{m.label}</p>
+                            </div>
+                        ))}
                     </div>
                 )}
             </div>

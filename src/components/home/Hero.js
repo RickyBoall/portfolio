@@ -39,7 +39,7 @@ export default function Hero({ track }) {
                         <a href="#work" className="inline-flex min-h-12 items-center rounded-full bg-accent px-6 font-semibold text-accent-ink transition-colors hover:bg-accent-hover">
                             See my work
                         </a>
-                        <a href={resume} onClick={(e) => { e.preventDefault(); window.open('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQk-d5z3fFHsY8XueoQ9lFoi7F-P-Lnz1YJFg0fwRwR2wD9ZMBVYKbvlTk&s=10'); }} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center rounded-full border border-line px-6 font-semibold transition-colors hover:border-faint">
+                        <a href={resume} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center rounded-full border border-line px-6 font-semibold transition-colors hover:border-faint">
                             Open resume
                         </a>
                     </div>
