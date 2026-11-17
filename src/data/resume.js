@@ -112,7 +112,7 @@ export const tracks = {
             {
                 ...wonderfi,
                 role: "Junior Software Developer",
-                text: "On WonderFi's trading platform, my work spanned web and mobile, from a post-trade experience that got people trading again to in-house vector search that made the admin dashboard faster for internal teams. Behind the scenes, I built an in-house pricing service that cut out duplicate third-party API calls. I also ran deployments on Amazon EKS with ArgoCD and GitOps, built AWS Lambda services for backend work and automation, and introduced LaunchDarkly feature flags for gradual rollouts.",
+                text: "I built features across WonderFi's trading platform on web and mobile, from a post-trade experience that got people trading again to in-house vector search that made the admin dashboard faster for internal teams. Behind the scenes, I built an in-house pricing service that cut out duplicate third-party API calls. I also ran deployments on Amazon EKS with ArgoCD and GitOps, built AWS Lambda services for backend work and automation, and introduced LaunchDarkly feature flags for gradual rollouts.",
                 tags: ["Go", "Python", "TypeScript", "Java", "React", "React Native", "Redis", "Vector search", "Amazon EKS", "AWS Lambda", "ArgoCD", "LaunchDarkly"],
             },
             {
